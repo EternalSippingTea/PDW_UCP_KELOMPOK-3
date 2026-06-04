@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<title>Activity Diagram — Sistem Manajemen Kos & Indekos</title>
+<style>
+  @page { size: A4 portrait; margin: 1.2cm; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; color:#0f172a; max-width: 850px; margin: 0 auto; padding: 1.5rem; background:#fff; }
+  h1 { text-align:center; font-size: 22px; margin: 0 0 .25rem; }
+  .sub { text-align:center; color:#64748b; font-size: 13px; margin-bottom: 1rem; }
+  .meta { display:flex; justify-content:space-between; font-size: 12px; color:#475569; border-bottom:1px solid #e2e8f0; padding-bottom: .6rem; margin-bottom: 1rem; }
+  svg { width:100%; height:auto; display:block; margin: 0 auto; }
+  .section-title { background:#f1f5f9; color:#0f172a; padding:.5rem .75rem; border-left:4px solid #0ea5e9; font-weight:700; font-size:14px; margin: 1.25rem 0 .75rem; }
+  .legend { margin-top: 1rem; font-size: 12px; color:#334155; }
+  .legend table { border-collapse: collapse; width:100%; }
+  .legend td { padding: 4px 8px; border:1px solid #e2e8f0; vertical-align: top; }
+  .legend td:first-child { width: 28%; font-weight:600; background:#f8fafc; }
+  @media print { body{padding:0} .no-print{display:none} .section-title{page-break-after:avoid} svg{page-break-inside:avoid} }
+  .controls { position:fixed; top:12px; right:12px; }
+  .controls button { background:#0ea5e9; color:white; border:0; padding: 8px 16px; border-radius: 8px; font-weight:600; cursor:pointer; }
+</style>
+</head>
+<body>
+
+<div class="controls no-print"><button onclick="window.print()">🖨 Print / Save as PDF</button></div>
+
+<h1>Activity Diagram</h1>
+<div class="sub">Sistem Manajemen Kos &amp; Indekos</div>
+
+<div class="meta">
+  <div><strong>Project:</strong> UCP Pengembangan Desain Web</div>
+  <div><strong>Tim:</strong> Kelompok 3</div>
+  <div><strong>Versi:</strong> 1.0</div>
+</div>
+
+<!-- ==================== FLOW 1: BOOKING ==================== -->
+<div class="section-title">Flow 1 — Pengajuan Sewa Kamar (Booking)</div>
+
+<svg viewBox="0 0 700 1180" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="arr1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#475569"/>
+    </marker>
+    <style>
+      .swim { fill:#f8fafc; stroke:#cbd5e1; }
+      .swim-label { font:700 12px 'Segoe UI'; fill:#475569; }
+      .start { fill:#0f172a; }
+      .end-outer { fill:none; stroke:#0f172a; stroke-width:2; }
+      .end-inner { fill:#0f172a; }
+      .act { fill:#dbeafe; stroke:#1d4ed8; stroke-width:1.5; rx:18; ry:18; }
+      .act-owner { fill:#ede9fe; stroke:#7c3aed; stroke-width:1.5; rx:18; ry:18; }
+      .act-system { fill:#dcfce7; stroke:#16a34a; stroke-width:1.5; rx:18; ry:18; }
+      .act-text { font:500 11px 'Segoe UI'; fill:#0f172a; text-anchor:middle; }
+      .decision { fill:#fef3c7; stroke:#d97706; stroke-width:1.5; }
+      .decision-text { font:600 10px 'Segoe UI'; fill:#0f172a; text-anchor:middle; }
+      .arrow { stroke:#475569; stroke-width:1.5; fill:none; marker-end:url(#arr1); }
+      .arrow-label { font:italic 10px 'Segoe UI'; fill:#475569; }
+    </style>
+  </defs>
+
+  <!-- Swimlanes -->
+  <rect class="swim" x="20"  y="20" width="210" height="1140"/>
+  <rect class="swim" x="245" y="20" width="210" height="1140"/>
+  <rect class="swim" x="470" y="20" width="210" height="1140"/>
+  <text class="swim-label" x="125" y="42" text-anchor="middle">Calon Penghuni</text>
+  <text class="swim-label" x="350" y="42" text-anchor="middle">Sistem</text>
+  <text class="swim-label" x="575" y="42" text-anchor="middle">Pemilik Kos</text>
+
+  <!-- Start -->
+  <circle class="start" cx="125" cy="80" r="9"/>
+  <line class="arrow" x1="125" y1="89"  x2="125" y2="110"/>
+
+  <!-- 1. Buka katalog -->
+  <rect class="act" x="55"  y="115" width="140" height="38"/>
+  <text class="act-text" x="125" y="139">Buka katalog kamar</text>
+  <line class="arrow" x1="125" y1="153" x2="125" y2="175"/>
+
+  <!-- 2. Filter / pilih kamar -->
+  <rect class="act" x="55"  y="180" width="140" height="38"/>
+  <text class="act-text" x="125" y="204">Filter / pilih kamar</text>
+  <line class="arrow" x1="125" y1="218" x2="125" y2="240"/>
+
+  <!-- 3. Lihat detail -->
+  <rect class="act" x="55"  y="245" width="140" height="38"/>
+  <text class="act-text" x="125" y="269">Lihat detail kamar</text>
+  <line class="arrow" x1="125" y1="283" x2="125" y2="310"/>
+
+  <!-- Decision: status kamar tersedia? (in System lane) -->
+  <polygon class="decision" points="350,310 410,345 350,380 290,345"/>
+  <text class="decision-text" x="350" y="343">Kamar</text>
+  <text class="decision-text" x="350" y="356">tersedia?</text>
+  <line class="arrow" x1="195" y1="310" x2="290" y2="345"/>
+
+  <!-- No → End -->
+  <line class="arrow" x1="350" y1="380" x2="350" y2="410"/>
+  <text class="arrow-label" x="358" y="400">Tidak</text>
+  <rect class="act-system" x="280" y="415" width="140" height="38"/>
+  <text class="act-text" x="350" y="439">Tampilkan "Terisi"</text>
+  <line class="arrow" x1="350" y1="453" x2="350" y2="480"/>
+  <circle class="end-outer" cx="350" cy="495" r="11"/>
+  <circle class="end-inner" cx="350" cy="495" r="6"/>
+
+  <!-- Yes → klik Ajukan Sewa -->
+  <line class="arrow" x1="410" y1="345" x2="500" y2="345"/>
+  <text class="arrow-label" x="430" y="338">Ya</text>
+  <line class="arrow" x1="500" y1="345" x2="500" y2="500" stroke-dasharray="0"/>
+  <line class="arrow" x1="500" y1="345" x2="195" y2="345" stroke="#94a3b8" stroke-dasharray="3 3" marker-end=""/>
+  <line class="arrow" x1="125" y1="350" x2="125" y2="380"/>
+
+  <rect class="act" x="55"  y="385" width="140" height="38"/>
+  <text class="act-text" x="125" y="409">Klik "Ajukan Sewa"</text>
+  <line class="arrow" x1="125" y1="423" x2="125" y2="445"/>
+
+  <!-- Decision: sudah login? -->
+  <polygon class="decision" points="350,440 410,475 350,510 290,475"/>
+  <text class="decision-text" x="350" y="473">Sudah</text>
+  <text class="decision-text" x="350" y="486">login?</text>
+  <line class="arrow" x1="195" y1="440" x2="290" y2="475"/>
+
+  <!-- No → register/login -->
+  <line class="arrow" x1="290" y1="475" x2="195" y2="540"/>
+  <text class="arrow-label" x="220" y="500">Tidak</text>
+  <rect class="act" x="55"  y="545" width="140" height="38"/>
+  <text class="act-text" x="125" y="569">Login / Register</text>
+  <line class="arrow" x1="125" y1="583" x2="125" y2="605"/>
+
+  <!-- Yes path skip langsung ke form -->
+  <line class="arrow" x1="350" y1="510" x2="350" y2="610"/>
+  <text class="arrow-label" x="358" y="540">Ya</text>
+
+  <!-- 4. Isi form booking -->
+  <rect class="act" x="55"  y="610" width="140" height="50"/>
+  <text class="act-text" x="125" y="630">Isi data:</text>
+  <text class="act-text" x="125" y="648">nama, tgl mulai, durasi</text>
+  <line class="arrow" x1="125" y1="660" x2="125" y2="685"/>
+
+  <!-- 5. Submit -->
+  <rect class="act" x="55"  y="690" width="140" height="38"/>
+  <text class="act-text" x="125" y="714">Submit permohonan</text>
+  <line class="arrow" x1="195" y1="709" x2="280" y2="755"/>
+
+  <!-- 6. Sistem validasi (anti double booking) -->
+  <rect class="act-system" x="280" y="740" width="140" height="50"/>
+  <text class="act-text" x="350" y="760">Validasi input &amp;</text>
+  <text class="act-text" x="350" y="778">cek double-booking</text>
+  <line class="arrow" x1="350" y1="790" x2="350" y2="810"/>
+
+  <!-- Decision: valid? -->
+  <polygon class="decision" points="350,810 410,845 350,880 290,845"/>
+  <text class="decision-text" x="350" y="850">Valid?</text>
+
+  <!-- No → show error -->
+  <line class="arrow" x1="290" y1="845" x2="195" y2="845"/>
+  <text class="arrow-label" x="220" y="838">Tidak</text>
+  <rect class="act" x="55" y="826" width="140" height="38"/>
+  <text class="act-text" x="125" y="850">Lihat pesan error</text>
+  <line class="arrow" x1="55" y1="845" x2="40" y2="845" stroke="#94a3b8"/>
+  <line class="arrow" x1="40" y1="845" x2="40" y2="680" stroke="#94a3b8" marker-end=""/>
+  <line class="arrow" x1="40" y1="680" x2="55" y2="680" stroke="#94a3b8"/>
+
+  <!-- Yes → simpan ke DB -->
+  <line class="arrow" x1="350" y1="880" x2="350" y2="900"/>
+  <text class="arrow-label" x="358" y="895">Ya</text>
+  <rect class="act-system" x="280" y="905" width="140" height="50"/>
+  <text class="act-text" x="350" y="925">Simpan ke booking</text>
+  <text class="act-text" x="350" y="943">Status: pending</text>
+  <line class="arrow" x1="350" y1="955" x2="350" y2="975"/>
+
+  <!-- Sistem generate kode -->
+  <rect class="act-system" x="280" y="980" width="140" height="38"/>
+  <text class="act-text" x="350" y="1004">Generate kode BK-YYYY-NNN</text>
+  <line class="arrow" x1="420" y1="1000" x2="500" y2="1000"/>
+
+  <!-- Pemilik notifikasi -->
+  <rect class="act-owner" x="505" y="980" width="140" height="38"/>
+  <text class="act-text" x="575" y="1004">Pemilik diberi notifikasi</text>
+  <line class="arrow" x1="350" y1="1018" x2="125" y2="1080" stroke="#94a3b8"/>
+
+  <!-- End for booking submitted -->
+  <rect class="act" x="55"  y="1075" width="140" height="38"/>
+  <text class="act-text" x="125" y="1099">Lihat kode booking</text>
+  <line class="arrow" x1="125" y1="1113" x2="125" y2="1135"/>
+  <circle class="end-outer" cx="125" cy="1150" r="11"/>
+  <circle class="end-inner" cx="125" cy="1150" r="6"/>
+</svg>
+
+<!-- ==================== FLOW 2: APPROVAL ==================== -->
+<div class="section-title">Flow 2 — Persetujuan Booking &amp; Pembuatan Tagihan (Owner)</div>
+
+<svg viewBox="0 0 700 700" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="arr2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#475569"/>
+    </marker>
+  </defs>
+
+  <rect class="swim" x="20"  y="20" width="320" height="660"/>
+  <rect class="swim" x="355" y="20" width="320" height="660"/>
+  <text class="swim-label" x="180" y="42" text-anchor="middle">Pemilik Kos</text>
+  <text class="swim-label" x="515" y="42" text-anchor="middle">Sistem</text>
+
+  <circle class="start" cx="180" cy="80" r="9"/>
+  <line class="arrow" x1="180" y1="89" x2="180" y2="110" marker-end="url(#arr2)"/>
+
+  <rect class="act-owner" x="100" y="115" width="160" height="38"/>
+  <text class="act-text" x="180" y="139">Buka dashboard admin</text>
+  <line class="arrow" x1="180" y1="153" x2="180" y2="175" marker-end="url(#arr2)"/>
+
+  <rect class="act-owner" x="100" y="180" width="160" height="38"/>
+  <text class="act-text" x="180" y="204">Lihat permohonan pending</text>
+  <line class="arrow" x1="180" y1="218" x2="180" y2="240" marker-end="url(#arr2)"/>
+
+  <rect class="act-owner" x="100" y="245" width="160" height="38"/>
+  <text class="act-text" x="180" y="269">Tinjau detail booking</text>
+  <line class="arrow" x1="180" y1="283" x2="180" y2="305" marker-end="url(#arr2)"/>
+
+  <polygon class="decision" points="180,305 240,340 180,375 120,340"/>
+  <text class="decision-text" x="180" y="338">Setujui?</text>
+
+  <line class="arrow" x1="120" y1="340" x2="60" y2="340" marker-end="url(#arr2)"/>
+  <text class="arrow-label" x="75" y="332">Tidak</text>
+  <rect class="act-owner" x="20" y="385" width="120" height="38" rx="18" ry="18" fill="#fee2e2" stroke="#dc2626"/>
+  <text class="act-text" x="80" y="409">Klik "Tolak"</text>
+  <line class="arrow" x1="60" y1="340" x2="60" y2="385" marker-end="url(#arr2)"/>
+  <line class="arrow" x1="80" y1="423" x2="80" y2="455" marker-end="url(#arr2)"/>
+  <rect class="act-system" x="395" y="460" width="160" height="38"/>
+  <text class="act-text" x="475" y="484">Update status = rejected</text>
+  <line class="arrow" x1="80" y1="455" x2="395" y2="479" marker-end="url(#arr2)" stroke-dasharray="4 3"/>
+
+  <line class="arrow" x1="240" y1="340" x2="300" y2="340" marker-end="url(#arr2)"/>
+  <text class="arrow-label" x="245" y="332">Ya</text>
+  <rect class="act-owner" x="220" y="385" width="120" height="38" rx="18" ry="18" fill="#dcfce7" stroke="#16a34a"/>
+  <text class="act-text" x="280" y="409">Klik "Setujui"</text>
+  <line class="arrow" x1="280" y1="340" x2="280" y2="385" marker-end="url(#arr2)"/>
+  <line class="arrow" x1="340" y1="404" x2="395" y2="404" marker-end="url(#arr2)"/>
+
+  <rect class="act-system" x="395" y="115" width="220" height="40"/>
+  <text class="act-text" x="505" y="139">Tampilkan list booking pending</text>
+  <line class="arrow" x1="260" y1="200" x2="395" y2="135" stroke-dasharray="4 3" marker-end="url(#arr2)"/>
+
+  <rect class="act-system" x="395" y="385" width="220" height="40"/>
+  <text class="act-text" x="505" y="409">Update status booking = ongoing</text>
+  <line class="arrow" x1="505" y1="425" x2="505" y2="445" marker-end="url(#arr2)"/>
+
+  <rect class="act-system" x="395" y="450" width="220" height="40"/>
+  <text class="act-text" x="505" y="474">Update kamar = terisi</text>
+  <line class="arrow" x1="505" y1="490" x2="505" y2="510" marker-end="url(#arr2)"/>
+
+  <rect class="act-system" x="395" y="515" width="220" height="55"/>
+  <text class="act-text" x="505" y="535">Loop: generate tagihan</text>
+  <text class="act-text" x="505" y="553">bulanan sebanyak durasi</text>
+  <line class="arrow" x1="505" y1="570" x2="505" y2="600" marker-end="url(#arr2)"/>
+
+  <rect class="act-system" x="395" y="605" width="220" height="38"/>
+  <text class="act-text" x="505" y="629">Tampilkan notifikasi sukses</text>
+  <line class="arrow" x1="395" y1="624" x2="260" y2="624" stroke-dasharray="4 3" marker-end="url(#arr2)"/>
+
+  <circle class="end-outer" cx="180" cy="640" r="11"/>
+  <circle class="end-inner" cx="180" cy="640" r="6"/>
+  <line class="arrow" x1="180" y1="624" x2="180" y2="629" marker-end="url(#arr2)"/>
+</svg>
+
+<!-- ==================== FLOW 3: PAYMENT ==================== -->
+<div class="section-title">Flow 3 — Pembayaran &amp; Verifikasi</div>
+
+<svg viewBox="0 0 700 920" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="arr3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#475569"/>
+    </marker>
+  </defs>
+
+  <rect class="swim" x="20"  y="20" width="210" height="880"/>
+  <rect class="swim" x="245" y="20" width="210" height="880"/>
+  <rect class="swim" x="470" y="20" width="210" height="880"/>
+  <text class="swim-label" x="125" y="42" text-anchor="middle">Penghuni</text>
+  <text class="swim-label" x="350" y="42" text-anchor="middle">Sistem</text>
+  <text class="swim-label" x="575" y="42" text-anchor="middle">Pemilik Kos</text>
+
+  <circle class="start" cx="125" cy="80" r="9"/>
+  <line class="arrow" x1="125" y1="89" x2="125" y2="110" marker-end="url(#arr3)"/>
+
+  <rect class="act" x="55" y="115" width="140" height="38"/>
+  <text class="act-text" x="125" y="139">Buka "Tagihan Saya"</text>
+  <line class="arrow" x1="125" y1="153" x2="125" y2="175" marker-end="url(#arr3)"/>
+
+  <rect class="act" x="55" y="180" width="140" height="38"/>
+  <text class="act-text" x="125" y="204">Pilih tagihan belum lunas</text>
+  <line class="arrow" x1="125" y1="218" x2="125" y2="240" marker-end="url(#arr3)"/>
+
+  <rect class="act" x="55" y="245" width="140" height="38"/>
+  <text class="act-text" x="125" y="269">Klik "Upload Bukti"</text>
+  <line class="arrow" x1="125" y1="283" x2="125" y2="305" marker-end="url(#arr3)"/>
+
+  <rect class="act" x="55" y="310" width="140" height="50"/>
+  <text class="act-text" x="125" y="330">Isi nominal, metode,</text>
+  <text class="act-text" x="125" y="348">pilih foto bukti</text>
+  <line class="arrow" x1="125" y1="360" x2="125" y2="385" marker-end="url(#arr3)"/>
+
+  <rect class="act" x="55" y="390" width="140" height="38"/>
+  <text class="act-text" x="125" y="414">Submit</text>
+  <line class="arrow" x1="195" y1="409" x2="280" y2="450" marker-end="url(#arr3)"/>
+
+  <rect class="act-system" x="280" y="430" width="140" height="50"/>
+  <text class="act-text" x="350" y="450">Validasi MIME, ukuran,</text>
+  <text class="act-text" x="350" y="468">simpan file ke uploads/</text>
+  <line class="arrow" x1="350" y1="480" x2="350" y2="500" marker-end="url(#arr3)"/>
+
+  <polygon class="decision" points="350,500 410,535 350,570 290,535"/>
+  <text class="decision-text" x="350" y="533">File</text>
+  <text class="decision-text" x="350" y="546">valid?</text>
+
+  <line class="arrow" x1="290" y1="535" x2="195" y2="535" marker-end="url(#arr3)"/>
+  <text class="arrow-label" x="220" y="528">Tidak</text>
+  <rect class="act" x="55" y="516" width="140" height="38"/>
+  <text class="act-text" x="125" y="540">Lihat pesan error</text>
+
+  <line class="arrow" x1="350" y1="570" x2="350" y2="590" marker-end="url(#arr3)"/>
+  <text class="arrow-label" x="358" y="585">Ya</text>
+
+  <rect class="act-system" x="280" y="595" width="140" height="50"/>
+  <text class="act-text" x="350" y="615">Insert ke pembayaran</text>
+  <text class="act-text" x="350" y="633">status = pending</text>
+  <line class="arrow" x1="420" y1="620" x2="500" y2="700" marker-end="url(#arr3)"/>
+
+  <rect class="act-owner" x="505" y="700" width="140" height="50"/>
+  <text class="act-text" x="575" y="720">Pemilik tinjau</text>
+  <text class="act-text" x="575" y="738">bukti pembayaran</text>
+  <line class="arrow" x1="575" y1="750" x2="575" y2="770" marker-end="url(#arr3)"/>
+
+  <polygon class="decision" points="575,770 635,805 575,840 515,805"/>
+  <text class="decision-text" x="575" y="803">Bukti</text>
+  <text class="decision-text" x="575" y="816">valid?</text>
+
+  <line class="arrow" x1="515" y1="805" x2="420" y2="805" marker-end="url(#arr3)"/>
+  <text class="arrow-label" x="445" y="798">Tidak</text>
+  <rect class="act-system" x="280" y="786" width="140" height="38"/>
+  <text class="act-text" x="350" y="810">Status = rejected</text>
+
+  <line class="arrow" x1="575" y1="840" x2="575" y2="860" marker-end="url(#arr3)"/>
+  <text class="arrow-label" x="583" y="855">Ya</text>
+
+  <rect class="act-system" x="280" y="865" width="140" height="38"/>
+  <text class="act-text" x="350" y="889">Tagihan = lunas</text>
+  <line class="arrow" x1="575" y1="860" x2="420" y2="884" marker-end="url(#arr3)"/>
+
+  <circle class="end-outer" cx="125" cy="880" r="11"/>
+  <circle class="end-inner" cx="125" cy="880" r="6"/>
+  <line class="arrow" x1="280" y1="884" x2="195" y2="880" marker-end="url(#arr3)" stroke-dasharray="4 3"/>
+</svg>
+
+<div class="legend">
+  <h3 style="margin-bottom:.5rem;">Penjelasan Notasi</h3>
+  <table>
+    <tr><td>● (titik hitam)</td><td><strong>Initial Node</strong> — titik awal aktivitas.</td></tr>
+    <tr><td>◉ (lingkaran ganda)</td><td><strong>Final Node</strong> — akhir aktivitas.</td></tr>
+    <tr><td>Kotak biru bulat</td><td><strong>Aktivitas oleh Penghuni / Calon Penghuni</strong>.</td></tr>
+    <tr><td>Kotak ungu bulat</td><td><strong>Aktivitas oleh Pemilik Kos</strong>.</td></tr>
+    <tr><td>Kotak hijau bulat</td><td><strong>Aktivitas otomatis oleh Sistem</strong> (validasi, simpan DB, dst).</td></tr>
+    <tr><td>♦ (belah ketupat)</td><td><strong>Decision Node</strong> — percabangan keputusan.</td></tr>
+    <tr><td>Swimlane</td><td>Kolom vertikal yang membagi aktivitas berdasarkan aktor yang bertanggung jawab.</td></tr>
+    <tr><td>Garis putus-putus</td><td>Aliran objek / data antar swimlane.</td></tr>
+  </table>
+</div>
+
+</body></html>

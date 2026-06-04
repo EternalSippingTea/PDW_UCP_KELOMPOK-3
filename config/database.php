@@ -12,9 +12,9 @@ const DB_PORT = 3306;
 const DB_CHARSET = 'utf8mb4';
 
 const APP_NAME = 'Kos & Indekos';
-const APP_URL  = 'http://localhost/pdw-ucp/public';   // sesuaikan
+const APP_URL  = 'http://localhost/PDW-UCP/public';   // sesuaikan
 const UPLOAD_DIR = __DIR__ . '/../uploads';
-const UPLOAD_URL = '/pdw-ucp/uploads';                // path public ke uploads
+const UPLOAD_URL = '/PDW-UCP/uploads';                // path public ke uploads
 
 try {
   $pdo = new PDO(
