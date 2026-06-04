@@ -1,0 +1,18 @@
+# Block direct access to sensitive directories
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Disallow direct browsing of config/, includes/, sql/
+  RewriteRule ^(config|includes|sql)/ - [F,L]
+
+  # Default index
+  DirectoryIndex index.php index.html
+</IfModule>
+
+# PHP error reporting (matikan di produksi)
+php_flag display_errors on
+php_value error_reporting "E_ALL & ~E_DEPRECATED & ~E_STRICT"
+
+# Limit upload size
+php_value upload_max_filesize 5M
+php_value post_max_size 6M
