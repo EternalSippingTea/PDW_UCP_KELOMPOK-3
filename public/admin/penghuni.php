@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ . '/../../includes/auth.php';
-require_owner('/pdw-ucp/public/login.php');
+require_owner();
 $me = current_user();
 
 $rows = $pdo->query("

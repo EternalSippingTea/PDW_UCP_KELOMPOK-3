@@ -73,7 +73,7 @@ include __DIR__ . '/../includes/header.php';
       </select>
     </div>
     <div class="md:col-span-5 flex gap-2 justify-end">
-      <a href="/pdw-ucp/public/" class="btn btn-secondary">Reset</a>
+      <a href="<?= BASE_URL ?>/" class="btn btn-secondary">Reset</a>
       <button class="btn btn-primary">Terapkan Filter</button>
     </div>
   </form>

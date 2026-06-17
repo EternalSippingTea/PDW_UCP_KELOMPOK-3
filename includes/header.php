@@ -27,14 +27,14 @@ $page_title = $page_title ?? APP_NAME;
     }
   };
 </script>
-<link rel="stylesheet" href="/pdw-ucp/assets/css/style.css">
+<link rel="stylesheet" href="<?= ASSET_URL ?>/css/style.css">
 </head>
 <body class="font-sans bg-slate-50 text-slate-900 antialiased min-h-screen flex flex-col">
 
 <!-- Navbar -->
 <nav class="bg-white/80 backdrop-blur border-b border-slate-200 sticky top-0 z-40">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-    <a href="/pdw-ucp/public/" class="flex items-center gap-2">
+    <a href="<?= BASE_URL ?>/" class="flex items-center gap-2">
       <span class="w-9 h-9 rounded-xl bg-brand-600 text-white grid place-items-center font-bold">K</span>
       <span class="font-bold tracking-tight"><?= e(APP_NAME) ?></span>
     </a>
@@ -44,41 +44,41 @@ $page_title = $page_title ?? APP_NAME;
     </button>
 
     <div id="nav-menu" class="hidden md:flex items-center gap-1 text-sm">
-      <a href="/pdw-ucp/public/" class="px-3 py-2 rounded-lg hover:bg-slate-100">Katalog</a>
-      <a href="/pdw-ucp/public/pengumuman.php" class="px-3 py-2 rounded-lg hover:bg-slate-100">Pengumuman</a>
+      <a href="<?= BASE_URL ?>/" class="px-3 py-2 rounded-lg hover:bg-slate-100">Katalog</a>
+      <a href="<?= BASE_URL ?>/pengumuman.php" class="px-3 py-2 rounded-lg hover:bg-slate-100">Pengumuman</a>
       <?php if ($me): ?>
         <?php if ($me['role'] === 'owner'): ?>
-          <a href="/pdw-ucp/public/admin/" class="px-3 py-2 rounded-lg hover:bg-slate-100 font-medium text-brand-700">Dashboard</a>
+          <a href="<?= BASE_URL ?>/admin/" class="px-3 py-2 rounded-lg hover:bg-slate-100 font-medium text-brand-700">Dashboard</a>
         <?php else: ?>
-          <a href="/pdw-ucp/public/tagihan.php" class="px-3 py-2 rounded-lg hover:bg-slate-100">Tagihan Saya</a>
+          <a href="<?= BASE_URL ?>/tagihan.php" class="px-3 py-2 rounded-lg hover:bg-slate-100">Tagihan Saya</a>
         <?php endif; ?>
         <div class="ml-2 flex items-center gap-2 pl-3 border-l border-slate-200">
           <span class="w-8 h-8 rounded-full bg-brand-600 text-white grid place-items-center text-xs font-bold">
             <?= e(strtoupper(substr($me['nama'],0,1))) ?>
           </span>
           <span class="hidden sm:inline text-sm font-medium"><?= e($me['nama']) ?></span>
-          <a href="/pdw-ucp/public/logout.php" class="text-sm text-slate-500 hover:text-red-600 ml-2">Keluar</a>
+          <a href="<?= BASE_URL ?>/logout.php" class="text-sm text-slate-500 hover:text-red-600 ml-2">Keluar</a>
         </div>
       <?php else: ?>
-        <a href="/pdw-ucp/public/login.php"    class="px-3 py-2 rounded-lg hover:bg-slate-100">Masuk</a>
-        <a href="/pdw-ucp/public/register.php" class="ml-1 px-4 py-2 rounded-lg bg-brand-600 hover:bg-brand-700 text-white font-medium">Daftar</a>
+        <a href="<?= BASE_URL ?>/login.php"    class="px-3 py-2 rounded-lg hover:bg-slate-100">Masuk</a>
+        <a href="<?= BASE_URL ?>/register.php" class="ml-1 px-4 py-2 rounded-lg bg-brand-600 hover:bg-brand-700 text-white font-medium">Daftar</a>
       <?php endif; ?>
     </div>
   </div>
 
   <div id="nav-mobile" class="hidden md:hidden border-t border-slate-200 px-4 py-3 space-y-1 bg-white">
-    <a href="/pdw-ucp/public/" class="block px-3 py-2 rounded-lg hover:bg-slate-100">Katalog</a>
-    <a href="/pdw-ucp/public/pengumuman.php" class="block px-3 py-2 rounded-lg hover:bg-slate-100">Pengumuman</a>
+    <a href="<?= BASE_URL ?>/" class="block px-3 py-2 rounded-lg hover:bg-slate-100">Katalog</a>
+    <a href="<?= BASE_URL ?>/pengumuman.php" class="block px-3 py-2 rounded-lg hover:bg-slate-100">Pengumuman</a>
     <?php if ($me): ?>
       <?php if ($me['role'] === 'owner'): ?>
-        <a href="/pdw-ucp/public/admin/" class="block px-3 py-2 rounded-lg hover:bg-slate-100 font-medium text-brand-700">Dashboard</a>
+        <a href="<?= BASE_URL ?>/admin/" class="block px-3 py-2 rounded-lg hover:bg-slate-100 font-medium text-brand-700">Dashboard</a>
       <?php else: ?>
-        <a href="/pdw-ucp/public/tagihan.php" class="block px-3 py-2 rounded-lg hover:bg-slate-100">Tagihan Saya</a>
+        <a href="<?= BASE_URL ?>/tagihan.php" class="block px-3 py-2 rounded-lg hover:bg-slate-100">Tagihan Saya</a>
       <?php endif; ?>
-      <a href="/pdw-ucp/public/logout.php" class="block px-3 py-2 rounded-lg hover:bg-slate-100 text-red-600">Keluar</a>
+      <a href="<?= BASE_URL ?>/logout.php" class="block px-3 py-2 rounded-lg hover:bg-slate-100 text-red-600">Keluar</a>
     <?php else: ?>
-      <a href="/pdw-ucp/public/login.php"    class="block px-3 py-2 rounded-lg hover:bg-slate-100">Masuk</a>
-      <a href="/pdw-ucp/public/register.php" class="block px-3 py-2 rounded-lg bg-brand-600 text-white font-medium">Daftar</a>
+      <a href="<?= BASE_URL ?>/login.php"    class="block px-3 py-2 rounded-lg hover:bg-slate-100">Masuk</a>
+      <a href="<?= BASE_URL ?>/register.php" class="block px-3 py-2 rounded-lg bg-brand-600 text-white font-medium">Daftar</a>
     <?php endif; ?>
   </div>
 </nav>

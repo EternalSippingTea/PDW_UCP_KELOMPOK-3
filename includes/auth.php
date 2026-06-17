@@ -20,14 +20,17 @@ function is_logged_in() { return !empty($_SESSION['uid']); }
 function is_owner()     { $u = current_user(); return $u && $u['role'] === 'owner'; }
 function is_penghuni()  { $u = current_user(); return $u && $u['role'] === 'penghuni'; }
 
-function require_login($redir = '/pdw-ucp/public/login.php') {
+function require_login($redir = null) {
+  $redir = $redir ?? BASE_URL . '/login.php';
   if (!is_logged_in()) { set_flash('error', 'Silakan login terlebih dahulu.'); redirect($redir); }
 }
-function require_owner($redir = '/pdw-ucp/public/login.php') {
+function require_owner($redir = null) {
+  $redir = $redir ?? BASE_URL . '/login.php';
   require_login($redir);
   if (!is_owner()) { set_flash('error', 'Akses ditolak — khusus pemilik kos.'); redirect($redir); }
 }
-function require_penghuni($redir = '/pdw-ucp/public/login.php') {
+function require_penghuni($redir = null) {
+  $redir = $redir ?? BASE_URL . '/login.php';
   require_login($redir);
   if (!is_penghuni()) { set_flash('error', 'Akses ditolak.'); redirect($redir); }
 }

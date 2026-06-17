@@ -3,7 +3,7 @@
  * Owner Dashboard — Dzaki
  */
 require_once __DIR__ . '/../../includes/auth.php';
-require_owner('/pdw-ucp/public/login.php');
+require_owner();
 $me = current_user();
 
 $stats = [
@@ -133,7 +133,7 @@ const labels = <?= json_encode(array_column($chartData, 'm')) ?>;
 const data   = <?= json_encode(array_map(fn($r)=>(float)$r['total'], $chartData)) ?>;
 new Chart(document.getElementById('chart-rev'), {
   type: 'bar',
-  data: { labels, datasets: [{ label:'Pendapatan', data, backgroundColor:'#0ea5e9', borderRadius:6 }] },
+  data: { labels, datasets: [{ label:'Pendapatan', data, backgroundColor:'#2563eb', borderRadius:6 }] },
   options: { responsive:true, plugins:{ legend:{display:false} }, scales:{ y:{ ticks:{ callback:v=>'Rp '+(v/1000).toFixed(0)+'k' }}}}
 });
 </script>

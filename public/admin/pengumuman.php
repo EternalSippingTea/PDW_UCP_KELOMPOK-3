@@ -3,7 +3,7 @@
  * Pengumuman CRUD — Nur Sidik
  */
 require_once __DIR__ . '/../../includes/auth.php';
-require_owner('/pdw-ucp/public/login.php');
+require_owner();
 $me = current_user();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -102,5 +102,5 @@ include __DIR__ . '/../../includes/header.php';
 </div>
 </div>
 
-<script src="/pdw-ucp/assets/js/app.js"></script>
+<script src="<?= ASSET_URL ?>/js/app.js"></script>
 <?php include __DIR__ . '/../../includes/footer.php'; ?>

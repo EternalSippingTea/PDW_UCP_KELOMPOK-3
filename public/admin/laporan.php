@@ -3,7 +3,7 @@
  * Laporan keuangan — Nur Sidik (10% fitur tambahan)
  */
 require_once __DIR__ . '/../../includes/auth.php';
-require_owner('/pdw-ucp/public/login.php');
+require_owner();
 
 $year = (int)($_GET['year'] ?? date('Y'));
 
@@ -88,7 +88,7 @@ new Chart(document.getElementById('chart-rev'), {
     datasets:[{
       label:'Pendapatan',
       data: <?= json_encode(array_map(fn($r)=>(float)$r['total'],$rev)) ?>,
-      borderColor:'#0ea5e9', backgroundColor:'rgba(14,165,233,.12)', fill:true, tension:.35, pointRadius:4
+      borderColor:'#2563eb', backgroundColor:'rgba(14,165,233,.12)', fill:true, tension:.35, pointRadius:4
     }]
   },
   options:{ responsive:true, plugins:{ legend:{display:false} }, scales:{ y:{ ticks:{ callback:v=>'Rp '+(v/1000).toFixed(0)+'k' }}}}

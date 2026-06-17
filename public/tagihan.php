@@ -58,7 +58,7 @@ include __DIR__ . '/../includes/header.php';
   <h2 class="text-lg font-semibold mt-8">Permohonan & Sewa Aktif</h2>
   <?php if (!$bookings): ?>
     <div class="card p-8 mt-3 text-center text-slate-500">
-      Belum ada permohonan sewa. <a href="/pdw-ucp/public/" class="text-brand-600 hover:underline">Cari kamar →</a>
+      Belum ada permohonan sewa. <a href="<?= BASE_URL ?>/" class="text-brand-600 hover:underline">Cari kamar →</a>
     </div>
   <?php else: ?>
   <div class="grid md:grid-cols-2 gap-4 mt-3">

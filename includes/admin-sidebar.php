@@ -1,13 +1,13 @@
 <?php
 // Sidebar khusus admin dashboard.
 $nav = [
-  ['/pdw-ucp/public/admin/',            'Dashboard',     'home'],
-  ['/pdw-ucp/public/admin/kamar.php',   'Kamar',         'door'],
-  ['/pdw-ucp/public/admin/booking.php', 'Permohonan',    'inbox'],
-  ['/pdw-ucp/public/admin/pembayaran.php','Pembayaran',  'wallet'],
-  ['/pdw-ucp/public/admin/penghuni.php','Penghuni',      'users'],
-  ['/pdw-ucp/public/admin/pengumuman.php','Pengumuman',  'bell'],
-  ['/pdw-ucp/public/admin/laporan.php', 'Laporan',       'chart'],
+  [BASE_URL . '/admin/',             'Dashboard',  'home'],
+  [BASE_URL . '/admin/kamar.php',    'Kamar',      'door'],
+  [BASE_URL . '/admin/booking.php',  'Permohonan', 'inbox'],
+  [BASE_URL . '/admin/pembayaran.php','Pembayaran','wallet'],
+  [BASE_URL . '/admin/penghuni.php', 'Penghuni',   'users'],
+  [BASE_URL . '/admin/pengumuman.php','Pengumuman','bell'],
+  [BASE_URL . '/admin/laporan.php',  'Laporan',    'chart'],
 ];
 $icons = [
   'home'   => '<path d="M3 12l9-9 9 9M5 10v10h14V10"/>',
@@ -37,6 +37,6 @@ $cur = strtok($_SERVER['REQUEST_URI'], '?');
     <?php endforeach; ?>
   </nav>
   <div class="p-3 border-t border-slate-200">
-    <a href="/pdw-ucp/public/" class="block text-xs text-slate-500 hover:text-slate-900">← Kembali ke katalog</a>
+    <a href="<?= BASE_URL ?>/" class="block text-xs text-slate-500 hover:text-slate-900">← Kembali ke katalog</a>
   </div>
 </aside>

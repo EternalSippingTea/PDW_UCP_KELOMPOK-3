@@ -23,7 +23,7 @@ include __DIR__ . '/../includes/header.php';
 ?>
 
 <div class="max-w-6xl mx-auto px-4 sm:px-6 py-8">
-  <a href="/pdw-ucp/public/" class="text-sm text-slate-500 hover:text-slate-900">← Kembali ke katalog</a>
+  <a href="<?= BASE_URL ?>/" class="text-sm text-slate-500 hover:text-slate-900">← Kembali ke katalog</a>
 
   <div class="mt-4 grid lg:grid-cols-5 gap-6">
     <!-- Gallery -->

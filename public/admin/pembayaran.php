@@ -3,7 +3,7 @@
  * Verifikasi pembayaran — Dzaki / Drivandi
  */
 require_once __DIR__ . '/../../includes/auth.php';
-require_owner('/pdw-ucp/public/login.php');
+require_owner();
 $me = current_user();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -54,7 +54,7 @@ include __DIR__ . '/../../includes/header.php';
 
   <div class="mt-4 flex gap-2 text-sm">
     <?php foreach (['' => 'Semua','pending'=>'Pending','verified'=>'Verified','rejected'=>'Rejected'] as $k=>$lbl): ?>
-      <a href="?status=<?= $k ?>" class="px-3 py-1.5 rounded-lg <?= $status===$k?'bg-brand-500 text-white':'bg-white border border-slate-200 text-slate-600 hover:bg-slate-50' ?>"><?= $lbl ?></a>
+      <a href="?status=<?= $k ?>" class="px-3 py-1.5 rounded-lg <?= $status===$k?'bg-brand-600 text-white':'bg-white border border-slate-200 text-slate-600 hover:bg-slate-50' ?>"><?= $lbl ?></a>
     <?php endforeach; ?>
   </div>
 
@@ -108,5 +108,5 @@ include __DIR__ . '/../../includes/header.php';
 </div>
 </div>
 
-<script src="/pdw-ucp/assets/js/app.js"></script>
+<script src="<?= ASSET_URL ?>/js/app.js"></script>
 <?php include __DIR__ . '/../../includes/footer.php'; ?>

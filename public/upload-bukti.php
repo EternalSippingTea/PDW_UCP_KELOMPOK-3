@@ -100,5 +100,5 @@ include __DIR__ . '/../includes/header.php';
   <?php endif; ?>
 </div>
 
-<script src="/pdw-ucp/assets/js/app.js"></script>
+<script src="<?= ASSET_URL ?>/js/app.js"></script>
 <?php include __DIR__ . '/../includes/footer.php'; ?>

@@ -64,6 +64,42 @@ Detail tanggung jawab tiap anggota: lihat [`docs/tim-assignment.md`](docs/tim-as
 
 ---
 
+## ☁️ Deploy ke cPanel (hosting)
+
+URL aplikasi **terdeteksi otomatis** (lihat `BASE_URL` di `config/database.php`),
+jadi tidak ada path yang perlu diedit manual. Langkah deploy:
+
+1. **Upload semua file project** ke hosting via File Manager / FTP:
+   - Letakkan di `public_html/` (atau subfolder mis. `public_html/kos/`).
+   - Bisa upload `.zip` lalu **Extract** langsung di File Manager (lebih cepat).
+
+2. **Buat database MySQL** di cPanel → **MySQL Databases**:
+   - Buat database baru (mis. `namauser_kos`).
+   - Buat user MySQL + password, lalu **Add User to Database** dengan **ALL PRIVILEGES**.
+
+3. **Import struktur tabel** di cPanel → **phpMyAdmin**:
+   - Pilih database tadi → tab **Import** → pilih `sql/schema.sql` → **Go**.
+   - (Opsional) Import `sql/seed.sql` untuk data contoh kamar/booking.
+
+4. **Edit kredensial database** di `config/database.php`:
+   ```php
+   const DB_HOST = 'localhost';            // umumnya 'localhost' di cPanel
+   const DB_NAME = 'namauser_kos';         // nama database dari cPanel
+   const DB_USER = 'namauser_kosuser';     // user MySQL dari cPanel
+   const DB_PASS = 'password_yang_dibuat';
+   ```
+
+5. **Buka aplikasi** di browser:
+   - Jika upload ke `public_html/` → `https://domainanda.com/public/`
+   - Jika ke subfolder `public_html/kos/` → `https://domainanda.com/kos/public/`
+   - Akun demo akan **otomatis dibuat** saat pertama membuka halaman login.
+
+> **Tips:** kalau ingin URL langsung `https://domainanda.com/` (tanpa `/public`),
+> buat **subdomain** di cPanel yang document root-nya diarahkan ke folder `public`.
+> Untuk submission tugas, cara nomor 5 di atas sudah cukup.
+
+---
+
 ## 🔐 Akun Demo
 
 | Role | Email | Password |

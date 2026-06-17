@@ -3,7 +3,7 @@
  * Form tambah/edit kamar — Dzaki
  */
 require_once __DIR__ . '/../../includes/auth.php';
-require_owner('/pdw-ucp/public/login.php');
+require_owner();
 
 $id = (int)($_GET['id'] ?? 0);
 $kamar = ['id'=>0,'kode'=>'','tipe'=>'Standar','ukuran_m2'=>9,'fasilitas'=>'','harga_bulanan'=>0,'status'=>'tersedia','foto_utama'=>'','deskripsi'=>''];
@@ -98,5 +98,5 @@ include __DIR__ . '/../../includes/header.php';
 </div>
 </div>
 
-<script src="/pdw-ucp/assets/js/app.js"></script>
+<script src="<?= ASSET_URL ?>/js/app.js"></script>
 <?php include __DIR__ . '/../../includes/footer.php'; ?>

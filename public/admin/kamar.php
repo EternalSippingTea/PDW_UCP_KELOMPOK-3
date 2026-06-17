@@ -3,7 +3,7 @@
  * CRUD Kamar — Dzaki
  */
 require_once __DIR__ . '/../../includes/auth.php';
-require_owner('/pdw-ucp/public/login.php');
+require_owner();
 $me = current_user();
 
 // Handle delete
@@ -66,5 +66,5 @@ include __DIR__ . '/../../includes/header.php';
 </div>
 </div>
 
-<script src="/pdw-ucp/assets/js/app.js"></script>
+<script src="<?= ASSET_URL ?>/js/app.js"></script>
 <?php include __DIR__ . '/../../includes/footer.php'; ?>

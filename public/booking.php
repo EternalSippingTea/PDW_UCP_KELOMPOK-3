@@ -66,7 +66,7 @@ include __DIR__ . '/../includes/header.php';
       </div>
       <div class="mt-6 flex gap-2 justify-center">
         <a href="tagihan.php" class="btn btn-secondary">Lihat Tagihan Saya</a>
-        <a href="/pdw-ucp/public/" class="btn btn-primary">Kembali ke Katalog</a>
+        <a href="<?= BASE_URL ?>/" class="btn btn-primary">Kembali ke Katalog</a>
       </div>
     </div>
   <?php else: ?>

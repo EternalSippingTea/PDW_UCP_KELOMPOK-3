@@ -12,9 +12,19 @@ const DB_PORT = 3306;
 const DB_CHARSET = 'utf8mb4';
 
 const APP_NAME = 'Kos & Indekos';
-const APP_URL  = 'http://localhost/PDW-UCP/public';   // sesuaikan
-const UPLOAD_DIR = __DIR__ . '/../uploads';
-const UPLOAD_URL = '/PDW-UCP/uploads';                // path public ke uploads
+
+// --- Auto-deteksi URL dasar (jalan di XAMPP & cPanel tanpa perlu diedit) ---
+// Mendeteksi lokasi folder project dari URL yang diakses, lalu menurunkan
+// URL untuk public/, assets/, dan uploads/. Tidak ada path yang di-hardcode.
+$__script = str_replace('\\', '/', $_SERVER['SCRIPT_NAME'] ?? '');
+$__pos    = strpos($__script, '/public/');
+$__root   = $__pos !== false ? substr($__script, 0, $__pos) : rtrim(dirname($__script), '/');
+define('ROOT_URL',   $__root);                // URL ke folder project (mis. /PDW-UCP atau '')
+define('BASE_URL',   ROOT_URL . '/public');   // URL ke folder public (entry point)
+define('ASSET_URL',  ROOT_URL . '/assets');   // URL ke assets (css/js)
+define('UPLOAD_URL', ROOT_URL . '/uploads');  // URL ke uploads (foto kamar/bukti)
+
+const UPLOAD_DIR = __DIR__ . '/../uploads';   // path filesystem untuk simpan file
 
 try {
   $pdo = new PDO(
