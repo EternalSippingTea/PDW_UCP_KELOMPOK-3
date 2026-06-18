@@ -4,11 +4,19 @@
  * Ganti kredensial sesuai environment Anda.
  */
 
-const DB_HOST = 'localhost';
-const DB_NAME = 'kos_indekos';
-const DB_USER = 'root';
-const DB_PASS = '';        // default XAMPP: kosong
-const DB_PORT = 3306;
+// ===== KONFIGURASI DATABASE =====
+// XAMPP (lokal)  : DB_NAME='kos_indekos', DB_USER='root', DB_PASS='' (kosong)
+// cPanel (hosting): cPanel MENAMBAHKAN prefix username ke nama DB & user!
+//   Contoh jika username cPanel = "eternals":
+//     - nama database  -> eternals_kosindekos   (BUKAN cuma "kosindekos")
+//     - nama user MySQL -> eternals_kosuser
+//   Pakai nama LENGKAP berikut prefix-nya, persis seperti yang tampil di
+//   cPanel > MySQL Databases.
+const DB_HOST = 'db.fr-pari1.bengt.wasmernet.com';        // cPanel: hampir selalu 'localhost'
+const DB_NAME = 'db_c0533c68';      // cPanel: ganti ke 'username_kosindekos'
+const DB_USER = 'user_4950cc73';             // cPanel: ganti ke 'username_kosuser'
+const DB_PASS = 'pw_849f5cca';                 // cPanel: isi password user MySQL
+const DB_PORT = 10272;
 const DB_CHARSET = 'utf8mb4';
 
 const APP_NAME = 'Kos & Indekos';
