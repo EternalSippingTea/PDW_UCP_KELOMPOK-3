@@ -14,8 +14,8 @@
 //   cPanel > MySQL Databases.
 const DB_HOST = 'db.fr-pari1.bengt.wasmernet.com';        // cPanel: hampir selalu 'localhost'
 const DB_NAME = 'db_c0533c68';      // cPanel: ganti ke 'username_kosindekos'
-const DB_USER = 'user_4950cc73';             // cPanel: ganti ke 'username_kosuser'
-const DB_PASS = 'pw_849f5cca';                 // cPanel: isi password user MySQL
+const DB_USER = 'user_10ddf577';             // cPanel: ganti ke 'username_kosuser'
+const DB_PASS = 'pw_92c0ecad';                 // cPanel: isi password user MySQL
 const DB_PORT = 10272;
 const DB_CHARSET = 'utf8mb4';
 
