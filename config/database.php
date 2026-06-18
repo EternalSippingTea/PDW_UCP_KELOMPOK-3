@@ -13,7 +13,7 @@
 //   Pakai nama LENGKAP berikut prefix-nya, persis seperti yang tampil di
 //   cPanel > MySQL Databases.
 const DB_HOST = 'db.fr-pari1.bengt.wasmernet.com';        // cPanel: hampir selalu 'localhost'
-const DB_NAME = 'db_c0533c68';      // cPanel: ganti ke 'username_kosindekos'
+const DB_NAME = 'db_06e0a185';      // cPanel: ganti ke 'username_kosindekos'
 const DB_USER = 'user_10ddf577';             // cPanel: ganti ke 'username_kosuser'
 const DB_PASS = 'pw_92c0ecad';                 // cPanel: isi password user MySQL
 const DB_PORT = 10272;
